@@ -1061,7 +1061,7 @@ void GPUSolver::setTrackGenerator(TrackGenerator* track_generator) {
  * @code
  *          num_FSRs = solver.getGeometry.getNumFSRs()
  *          NUM_GROUPS = solver.getGeometry.getNumEnergyGroups()
- *          fluxes = numpy.random.rand(num_FSRs * NUM_GROUPS, dtype=np.float)
+ *          fluxes = numpy.random.rand(num_FSRs * NUM_GROUPS, dtype=np.float64)
  *          solver.setFluxes(fluxes)
  * @endcode
  *

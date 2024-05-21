@@ -609,7 +609,7 @@ def plot_flat_source_regions(geometry, gridsize=250, xlim=None, ylim=None,
         if centroids:
 
             # Populate a NumPy array with the FSR centroid coordinates
-            centroids = np.zeros((num_fsrs, 2), dtype=np.float)
+            centroids = np.zeros((num_fsrs, 2), dtype=np.float64)
             for fsr_id in range(num_fsrs):
                 coords = geometry.getGlobalFSRCentroidData(fsr_id)
                 if plane == 'xy':
@@ -952,7 +952,7 @@ def plot_energy_fluxes(solver, fsrs, group_bounds=None, norm=True,
     for fsr in fsrs:
 
         # Allocate memory for an array of this FSR's fluxes
-        fluxes = np.zeros(num_groups, dtype=np.float)
+        fluxes = np.zeros(num_groups, dtype=np.float64)
 
         # Extract the flux in each energy group
         for group in range(num_groups):
@@ -1317,7 +1317,7 @@ def plot_spatial_data(domains_to_data, plot_params, get_figure=False):
             surface = domains_to_data.take(domains.flatten())
         # If domains-to-data was input as a Python dictionary
         else:
-            surface = np.zeros(domains.shape, dtype=np.float)
+            surface = np.zeros(domains.shape, dtype=np.float64)
             for domain_id in domains_to_data:
                 indices = np.where(domains == domain_id)
                 surface[indices] = domains_to_data[domain_id]
@@ -1947,7 +1947,7 @@ def _get_pil_image(array, plot_params):
     from PIL import Image
 
     # Convert array to a normalized array of floating point values
-    float_array = np.zeros(array.shape, dtype=np.float)
+    float_array = np.zeros(array.shape, dtype=np.float64)
     float_array[:,:] = array[:,:]
     float_array[:,:] /= np.max(float_array)
 
