@@ -6,6 +6,10 @@ import math
 import datetime
 import operator
 from numbers import Integral, Real
+try:
+    from collections import Iterable
+except ImportError: # changed in python 3.3
+    from collections.abc import Iterable
 import pickle
 
 import numpy as np

@@ -1,4 +1,10 @@
 import sys
+
+try:
+    from collections import Iterable
+except ImportError: # changed in python 3.3
+    from collections.abc import Iterable
+
 from numbers import Integral, Real
 
 import numpy as np
