@@ -166,7 +166,7 @@ void CPUSolver::setNumThreads(int num_threads) {
  *          routine may be used as follows from within Python:
  *
  * @code
- *          fluxes = numpy.random.rand(num_FSRs * num_groups, dtype=np.float)
+ *          fluxes = numpy.random.rand(num_FSRs * num_groups, dtype=np.float64)
  *          solver.setFluxes(fluxes)
  * @endcode
  *

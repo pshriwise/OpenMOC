@@ -86,8 +86,8 @@ openmoc.log.py_printf('NORMAL', 'Plotting data...')
 # Allocate arrays for FSR-specific data to extract from OpenMOC model
 num_fsrs = openmoc_geometry.getNumFSRs()
 cell_ids = np.zeros(num_fsrs, dtype=np.int)
-centroids = np.zeros(num_fsrs, dtype=np.float)
-volumes = np.zeros(num_fsrs, dtype=np.float)
+centroids = np.zeros(num_fsrs, dtype=np.float64)
+volumes = np.zeros(num_fsrs, dtype=np.float64)
 
 # Find the cell IDs, volumes, centroids and fluxes for each FSR
 for fsr_id in range(num_fsrs):

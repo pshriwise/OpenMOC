@@ -6,12 +6,10 @@ import math
 import datetime
 import operator
 from numbers import Integral, Real
-
 try:
     from collections import Iterable
 except ImportError: # changed in python 3.3
     from collections.abc import Iterable
-
 import pickle
 
 import numpy as np
@@ -27,6 +25,11 @@ if (sys.version_info[0] == 2):
 else:
     from openmoc.log import *
     import openmoc.checkvalue as cv
+
+if sys.version_info >= (3, 3):
+    from collections.abc import Iterable
+else:
+    from collections import Iterable
 
 # Store viable OpenMOC solver types for type checking
 solver_types = (openmoc.Solver,)
@@ -994,7 +997,7 @@ class Mesh(object):
             solver.computeFSRFissionRates(int(geometry.getNumTotalFSRs()), nu)
 
         # Initialize a 2D or 3D NumPy array in which to tally
-        tally = np.zeros(tuple(self.dimension), dtype=np.float)
+        tally = np.zeros(tuple(self.dimension), dtype=np.float64)
 
         # Tally the fission rates in each FSR to the corresponding mesh cell
         for fsr in range(num_fsrs):
@@ -1117,7 +1120,7 @@ class Mesh(object):
 
         # Initialize a 2D or 3D NumPy array in which to tally
         tally_shape = tuple(self.dimension) + (num_groups,)
-        tally = np.zeros(tally_shape, dtype=np.float)
+        tally = np.zeros(tally_shape, dtype=np.float64)
 
         # Compute product of fluxes with domains-to-coeffs mapping by group, FSR
         for fsr in range(num_fsrs):
@@ -1128,7 +1131,7 @@ class Mesh(object):
                 continue
 
             volume = solver.getFSRVolume(fsr)
-            fsr_tally = np.zeros(num_groups, dtype=np.float)
+            fsr_tally = np.zeros(num_groups, dtype=np.float64)
 
             # Determine domain ID (material, cell or FSR) for this FSR
             if domain_type == 'fsr':

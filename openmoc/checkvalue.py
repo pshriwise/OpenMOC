@@ -16,6 +16,11 @@ if (sys.version_info[0] == 2):
 else:
     from openmoc.log import *
 
+if sys.version_info >= (3, 3):
+    from collections.abc import Iterable
+else:
+    from collections import Iterable
+
 
 def _isinstance(value, expected_type):
     """A Numpy-aware replacement for isinstance
@@ -206,7 +211,7 @@ def check_value(name, value, accepted_values):
     ----------
     name : str
         Description of value being checked
-    value : collections.Iterable
+    value : Iterable
         Object to check
     accepted_values : collections.Container
         Container of acceptable values

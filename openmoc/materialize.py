@@ -761,7 +761,7 @@ def compute_sph_factors(mgxs_lib, max_sph_iters=30, sph_tol=1E-5,
         solver.resetFixedSources()
 
     # Collect SPH factors for each FSR, energy group
-    fsrs_to_sph = np.ones((num_fsrs, num_groups), dtype=np.float)
+    fsrs_to_sph = np.ones((num_fsrs, num_groups), dtype=np.float64)
     for i, openmc_domain in enumerate(mgxs_lib.domains):
         if openmc_domain.id in openmoc_domains:
             if openmc_domain.id in sph_domains:
